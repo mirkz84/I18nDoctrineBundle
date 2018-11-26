@@ -21,6 +21,7 @@ class ControllerListener extends BaseControllerListener
     public function onKernelController(FilterControllerEvent $event)
     {
         $controller = $event->getController();
+        if(!is_array($controller)){ return; }
         list($object, $method) = $controller;
 
         $className = ClassUtils::getClass($object);
